@@ -9,6 +9,6 @@
 - [x] JSON, Markdown, and HTML reports are generated locally.
 - [x] Tests cover blocked, allowed, unknown, and deterministic behavior.
 - [x] CI covers Python 3.9, 3.11, and 3.13.
-- [ ] Run the package validator immediately before packaging.
-- [ ] Build exactly one final zip inside this project folder.
-- [ ] Verify the zip excludes `.git`, generated output, caches, and raw data.
+- [x] Run the package validator immediately before packaging.
+- [x] Build exactly one final zip inside this project folder.
+- [x] Verify the zip excludes `.git`, generated output, caches, and raw data.
