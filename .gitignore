@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+demo-out/
+aggregate-out/
+dist/
+*.egg-info/
+*.zip

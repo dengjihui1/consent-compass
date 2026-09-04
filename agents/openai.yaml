@@ -1,0 +1,4 @@
+interface:
+  display_name: "Consent Compass"
+  short_description: "Preflight data-use boundaries against an analysis plan"
+  default_prompt: "Use $consent-compass to compare a dataset policy with an intended analysis and produce an evidence-grounded preflight report."
