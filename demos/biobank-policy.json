@@ -1,0 +1,20 @@
+{
+  "dataset": {"id": "synthetic-biobank", "version": "2026-01", "source_label": "synthetic policy fixture"},
+  "scope": {
+    "allowed_purposes": ["disease_research"],
+    "prohibited_purposes": ["employment_screening"],
+    "allowed_operations": ["read_fields", "aggregate_statistics"],
+    "prohibited_operations": ["cross_dataset_linkage", "individual_level_model"],
+    "output": {"max_granularity": "aggregate", "allowed_audiences": ["internal"], "prohibited_audiences": ["public"]},
+    "redistribution": "prohibited",
+    "commercial_use": "unknown",
+    "field_rules": {"participant_id": "prohibited", "diagnosis": "allowed", "age_band": "allowed"}
+  },
+  "evidence": {
+    "purpose": ["synthetic-policy.md:4"],
+    "operations": ["synthetic-policy.md:12"],
+    "output": ["synthetic-policy.md:18"],
+    "sharing": ["synthetic-policy.md:23"],
+    "fields": ["synthetic-policy.md:27"]
+  }
+}

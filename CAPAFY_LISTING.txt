@@ -1,0 +1,16 @@
+Name: Consent Compass
+Version: 0.1.0
+Category: Research data workflow / preflight audit
+Tagline: Compare what a dataset allows with what your analysis plans to do.
+
+Short description:
+Consent Compass is a local-first Skill and zero-dependency Python CLI that compares a declared dataset-use policy with an intended analysis. It surfaces explicit conflicts and missing evidence before analysis code runs, without reading or uploading raw records.
+
+Long description:
+Before joining datasets, fitting an individual-level model, or publishing results, use Consent Compass to make the declared data boundary explicit. It reports ALLOWED, NEEDS_REVIEW, BLOCKED, or UNKNOWN findings with rule IDs, policy evidence locations, and conservative lower-risk alternatives. It is not legal advice, ethics approval, a consent determination, or permission to publish.
+
+Example:
+python scripts/compass.py check --policy policy.json --intent analysis-intent.json --output out
+
+Privacy:
+The public repository contains synthetic fixtures only. The CLI reads metadata JSON and writes local reports. Do not provide raw records, credentials, or restricted consent documents.

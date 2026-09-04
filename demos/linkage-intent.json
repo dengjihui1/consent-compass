@@ -1,0 +1,11 @@
+{
+  "id": "intent-linkage-demo",
+  "analysis": {
+    "purpose": "disease_research",
+    "operations": ["read_fields", "cross_dataset_linkage", "individual_level_model"],
+    "fields": ["participant_id", "diagnosis"],
+    "output": {"granularity": "individual", "audience": "public"},
+    "redistribution": true,
+    "commercial": false
+  }
+}

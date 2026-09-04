@@ -1,0 +1,11 @@
+{
+  "id": "intent-aggregate-demo",
+  "analysis": {
+    "purpose": "disease_research",
+    "operations": ["read_fields", "aggregate_statistics"],
+    "fields": ["diagnosis", "age_band"],
+    "output": {"granularity": "aggregate", "audience": "internal"},
+    "redistribution": false,
+    "commercial": false
+  }
+}
