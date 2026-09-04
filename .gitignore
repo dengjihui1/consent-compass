@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 demo-out/
 aggregate-out/
+verify-out/
 dist/
 *.egg-info/
 *.zip
