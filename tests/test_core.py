@@ -2,7 +2,8 @@ import json
 import unittest
 from pathlib import Path
 
-from consent_compass.core import ALLOWED, BLOCKED, UNKNOWN, check_boundary
+from consent_compass.core import ALLOWED, BLOCKED, REVIEW, UNKNOWN, check_boundary
+from consent_compass.cli import render_html
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,6 +36,31 @@ class BoundaryTests(unittest.TestCase):
         policy = fixture("biobank-policy.json")
         intent = fixture("linkage-intent.json")
         self.assertEqual(check_boundary(policy, intent), check_boundary(policy, intent))
+
+    def test_explicit_prohibition_wins_over_permission(self):
+        policy = {
+            "scope": {"allowed_operations": ["read_fields"], "prohibited_operations": ["read_fields"]},
+            "evidence": {"operations": ["policy.md:1"]},
+        }
+        intent = {"id": "conflict", "analysis": {"operations": ["read_fields"]}}
+        report = check_boundary(policy, intent)
+        self.assertEqual(report["overall_status"], BLOCKED)
+        self.assertEqual(report["findings"][1]["status"], BLOCKED)
+
+    def test_unknown_operation_requires_review(self):
+        policy = {"scope": {"allowed_operations": []}, "evidence": {}}
+        intent = {"id": "new-operation", "analysis": {"operations": ["export_to_mars"]}}
+        report = check_boundary(policy, intent)
+        self.assertEqual(report["overall_status"], REVIEW)
+        self.assertEqual(report["findings"][1]["rule_id"], "OP-UNMAPPED")
+
+    def test_html_escapes_user_values(self):
+        policy = {"dataset": {"id": "<unsafe>"}, "scope": {}, "evidence": {}}
+        intent = {"id": "<intent>", "analysis": {"purpose": "<script>alert(1)</script>"}}
+        report = check_boundary(policy, intent)
+        page = render_html(report)
+        self.assertNotIn("<script>alert(1)</script>", page)
+        self.assertIn("&lt;script&gt;", page)
 
 
 if __name__ == "__main__":

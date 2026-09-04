@@ -127,4 +127,8 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Iterable[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    return args.handler(args)
+    try:
+        return args.handler(args)
+    except (OSError, ValueError) as exc:
+        parser.error(str(exc))
+        return 2
