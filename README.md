@@ -1,5 +1,7 @@
 # Consent Compass
 
+![Jihui](assets/brand/jihui-wordmark.png)
+
 > Before you analyse the data, check whether the declared boundary covers what you plan to do.
 
 Consent Compass is a local-first, zero-dependency Python Skill and CLI that compares a structured dataset-use policy with an analysis intent. It catches explicit mismatches such as prohibited record linkage, individual-level output, unapproved audiences, and missing redistribution evidence before analysis code runs.
